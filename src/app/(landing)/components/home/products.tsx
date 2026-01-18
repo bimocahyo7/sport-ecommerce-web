@@ -38,19 +38,19 @@ const productList = [
   {
     name: "SportsOn Baskell Ball",
     category: "Baskelball",
-    price: 450000,
+    price: 219000,
     imageUrl: "product-6.png",
   },
   {
     name: "SportsOn Rockets Tennis",
     category: "Running",
-    price: 450000,
+    price: 250000,
     imageUrl: "product-7.png",
   },
   {
-    name: "SportsOn HyperSoccer v3",
+    name: "SportsOn Hyperfast Shoes v2",
     category: "Running",
-    price: 450000,
+    price: 157000,
     imageUrl: "product-8.png",
   },
 ];
@@ -58,13 +58,13 @@ const productList = [
 const ProductsSection = () => {
   return (
     <section id="products-section" className="container mx-auto px-24">
-      <h2 className="font-bold italic text-center text-dark text-4xl mb-14">
+      <h2 className="font-bold italic text-center text-primary text-4xl mb-14">
         OUR
-        <span className="ml-2 text-primary">PRODUCT</span>
+        <span className="ml-2 text-dark">PRODUCTS</span>
       </h2>
       <div className="grid grid-cols-4 gap-5 mt-5 mb-40">
         {productList.map((product, index) => (
-          <Link href="#" key={index} className="bg-white hover:drop-shadow-xl duration-300">
+          <Link href="#" key={index} className="bg-white hover:drop-shadow-xl duration-300 p-1.5">
             <div className="bg-primary-light aspect-square w-full flex justify-center items-center relative">
               <Image
                 src={`/images/products/${product.imageUrl}`}

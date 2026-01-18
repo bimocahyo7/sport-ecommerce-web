@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="container mx-auto flex justify-between pt-14 pb-24 px-24">
         <div className="w-105">
           <Image src="/images/logo-white.svg" alt="Footer Logo" width={187} height={44} />
-          <p className=" mt-8">
+          <p className="mt-8">
             Engineered for endurance and designed for speed. Experience gear that moves as fast as you do.
           </p>
         </div>
