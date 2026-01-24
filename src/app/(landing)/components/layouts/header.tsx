@@ -1,8 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { FiSearch, FiShoppingBag } from "react-icons/fi";
+import CartPopup from "../ui/cart-popup";
+import { useState } from "react";
 
 const Header = () => {
+  const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
+
   return (
     <header className="relative z-50">
       <div className="flex justify-between gap-10 container mx-auto py-7 px-24">
@@ -20,14 +26,17 @@ const Header = () => {
           <Link href="#">Explore Products</Link>
         </nav>
 
-        <div className="flex gap-10">
+        <div className="relative flex gap-10">
           <FiSearch size={24} />
-          <div className="relative">
+
+          <button className="relative cursor-pointer" onClick={() => setIsCartPopupOpen(!isCartPopupOpen)}>
             <FiShoppingBag size={24} />
             <div className="bg-primary rounded-full w-4 h-4 absolute -top-1.5 -right-1 text-[12px] text-white text-center">
               3
             </div>
-          </div>
+          </button>
+
+          {isCartPopupOpen && <CartPopup />}
         </div>
       </div>
     </header>

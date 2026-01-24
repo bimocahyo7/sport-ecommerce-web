@@ -36,8 +36,8 @@ const productList = [
     imageUrl: "product-5.png",
   },
   {
-    name: "SportsOn Baskell Ball",
-    category: "Baskelball",
+    name: "SportsOn Basket Ball",
+    category: "Basketball",
     price: 219000,
     imageUrl: "product-6.png",
   },
@@ -64,7 +64,7 @@ const ProductsSection = () => {
       </h2>
       <div className="grid grid-cols-4 gap-5 mt-5 mb-40">
         {productList.map((product, index) => (
-          <Link href="#" key={index} className="bg-white hover:drop-shadow-xl duration-300 p-1.5">
+          <Link href={`/product/${product.name}`} key={index} className="bg-white hover:drop-shadow-xl duration-300 p-1.5">
             <div className="bg-primary-light aspect-square w-full flex justify-center items-center relative">
               <Image
                 src={`/images/products/${product.imageUrl}`}
