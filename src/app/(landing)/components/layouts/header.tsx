@@ -12,7 +12,7 @@ const Header = () => {
   const { items } = useCartStore();
 
   return (
-    <header className="relative z-50">
+    <header className="fixed w-full backdrop-blur-3xl bg-white/50 z-50">
       <div className="flex justify-between gap-10 container mx-auto py-7 px-24">
         <Link href="/">
           <Image src="/images/logo.svg" alt="Sport E-Commerce Logo" width={127} height={30}></Image>

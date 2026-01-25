@@ -13,8 +13,6 @@ const CartItems = () => {
 
   const totalPrice = cartList.reduce((total, item) => total + item.price * item.qty, 0);
 
-  const payment = () => {};
-
   return (
     <CardWithHeader title="Cart Items">
       <div className="overflow-auto max-h-[300px]">
