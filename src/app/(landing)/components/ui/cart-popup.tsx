@@ -75,13 +75,13 @@ const CartPopup = () => {
             </div>
           ))
         ) : (
-          <div className="p-6 text-center font-medium text-slate-400">Your cart is empty</div>
+          <div className="p-6 text-center font-extralight text-slate-400">Your cart is empty</div>
         )}
       </div>
       <div className="border-t border-gray-200 p-4">
         <div className="flex justify-between font-semibold">
           <div className="text-sm">Total</div>
-          <div className="text-primary text-xs">{priceFormatter(totalPrice)}</div>
+          <div className="text-primary text-sm">{priceFormatter(totalPrice)}</div>
         </div>
         <Button variant="dark" size="small" className="w-full mt-4" onClick={handleCheckout}>
           Checkout Now <FiArrowRight />

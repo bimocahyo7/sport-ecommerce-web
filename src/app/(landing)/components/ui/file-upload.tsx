@@ -32,8 +32,7 @@ const FileUpload = ({ onFileSelect }: TFileUploadProps) => {
         e.preventDefault();
         handleFileChange(e.dataTransfer.files?.[0]);
       }}
-      className="flex flex-col justify-center items-center w-full py-6 border border-dashed border-primary bg-primary-light"
-    >
+      className="flex flex-col justify-center items-center w-full py-6 border border-dashed border-primary bg-primary-light">
       <input
         type="file"
         className="hidden"
@@ -50,13 +49,8 @@ const FileUpload = ({ onFileSelect }: TFileUploadProps) => {
         <div className="text-center">
           <FiImage className="text-primary mx-auto mb-4" size={28} />
           <p className="text-sm text-primary">{file.name}</p>
-          <p className="text-sm text-gray-400">
-            {(file.size / 1024).toFixed(1)} KB
-          </p>
-          <button
-            onClick={removeFile}
-            className="flex gap-2 bg-primary/90 text-white mx-auto rounded mt-4 px-2"
-          >
+          <p className="text-sm text-gray-400">{(file.size / 1024).toFixed(1)} KB</p>
+          <button onClick={removeFile} className="flex gap-2 bg-primary/90 text-white mx-auto rounded mt-4 px-2">
             <FiTrash2 className="self-center" /> Remove
           </button>
         </div>

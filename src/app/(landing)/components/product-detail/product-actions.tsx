@@ -10,16 +10,21 @@ import { Product } from "@/app/types";
 type TProductActionsProps = {
   product: Product;
   stock: number;
-}
+};
 
-const ProductActions = ({product, stock}: TProductActionsProps) => {
-  const {addItem} = useCartStore()
+const ProductActions = ({ product, stock }: TProductActionsProps) => {
+  const { addItem } = useCartStore();
   const { push } = useRouter();
   const [qty, setQty] = useState(1);
 
   const handleAddToCart = () => {
-    addItem(product, qty)
-  }
+    addItem(product, qty);
+  };
+
+  const handleCheckoutNow = () => {
+    handleAddToCart();
+    push("/checkout");
+  };
 
   return (
     <div className="flex gap-5">
@@ -44,7 +49,7 @@ const ProductActions = ({product, stock}: TProductActionsProps) => {
         <FiShoppingBag size={24} />
         Add to Cart
       </Button>
-      <Button variant="dark" className="px-12" onClick={() => push("/checkout")}>
+      <Button variant="dark" className="px-12" onClick={handleCheckoutNow}>
         Checkout Now
         <FiArrowRight size={24} />
       </Button>
