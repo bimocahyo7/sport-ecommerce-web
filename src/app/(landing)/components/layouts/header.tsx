@@ -11,6 +11,14 @@ const Header = () => {
   const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
   const { items } = useCartStore();
 
+  const toggleCartPopup = () => {
+    setIsCartPopupOpen(!isCartPopupOpen);
+  }
+
+  const closeCartPopup = () => {
+    setIsCartPopupOpen(false)
+  }
+
   return (
     <header className="fixed w-full backdrop-blur-3xl bg-white/50 z-50">
       <div className="flex justify-between gap-10 container mx-auto py-7 px-24">
@@ -31,7 +39,7 @@ const Header = () => {
         <div className="relative flex gap-10">
           <FiSearch size={24} />
 
-          <button className="relative cursor-pointer" onClick={() => setIsCartPopupOpen(!isCartPopupOpen)}>
+          <button className="relative cursor-pointer" onClick={toggleCartPopup}>
             <FiShoppingBag size={24} />
             {items.length ? (
               <div className="bg-primary rounded-full w-4 h-4 absolute -top-1.5 -right-1 text-[12px] text-white text-center">
@@ -41,7 +49,7 @@ const Header = () => {
               <></>
             )}
           </button>
-          {isCartPopupOpen && <CartPopup />}
+          {isCartPopupOpen && <CartPopup onClose={closeCartPopup}/>}
         </div>
       </div>
     </header>

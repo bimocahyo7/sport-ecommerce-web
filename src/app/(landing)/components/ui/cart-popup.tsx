@@ -6,37 +6,24 @@ import { useRouter } from "next/navigation";
 import { useCartStore } from "@/app/hooks/use-cart-store";
 import { getImageUrl } from "@/app/lib/api";
 
-export const cartList = [
-  {
-    name: "SportsOn HyperSoccer v2",
-    category: "Football",
-    price: 458000,
-    qty: 2,
-    imgUrl: "product-4.png",
-  },
-  {
-    name: "SportsOn Slowlivin",
-    category: "Running",
-    price: 329000,
-    qty: 3,
-    imgUrl: "product-1.png",
-  },
-  {
-    name: "SportsOn Hyperfast Shoes",
-    category: "Running",
-    price: 119000,
-    qty: 1,
-    imgUrl: "product-3.png",
-  },
-];
+type TCartPopup = {
+  onClose: () => void;
+};
 
-const CartPopup = () => {
+const CartPopup = ({ onClose }: TCartPopup) => {
   const { push } = useRouter();
   const { items, removeItem } = useCartStore();
 
   const totalPrice = items.reduce((total, item) => total + item.price * item.qty, 0);
 
   const handleCheckout = () => {
+    // Disable navigate if cart is empty
+    if (!items.length) {
+      return;
+    }
+
+    // Close modal cart popup
+    onClose();
     push("/checkout");
   };
 

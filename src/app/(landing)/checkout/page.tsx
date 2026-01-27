@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 const Checkout = () => {
   const { push } = useRouter();
-  const { setCustomerInfo } = useCartStore();
+  const { items, setCustomerInfo } = useCartStore();
   const [formData, setFormData] = useState<CustomerInfo>({
     customerName: "",
     customerContact: null,
@@ -16,6 +16,10 @@ const Checkout = () => {
   });
 
   const handlePayment = () => {
+    if (!items.length) {
+      return;
+    }
+
     if (!formData.customerName && !formData.customerContact && !formData.customerAddress) {
       alert("Please fill in all required customer fields");
       return;

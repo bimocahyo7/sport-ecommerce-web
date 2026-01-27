@@ -21,35 +21,39 @@ const CartItems = ({ handlePayment }: TCartItems) => {
     <CardWithHeader title="Cart Items">
       <div className="flex flex-col justify-between h-[calc(100%-70px)]">
         <div className="overflow-auto max-h-75">
-          {items.map((item) => (
-            <div className="border-b border-gray-200 p-4 flex gap-3" key={item._id}>
-              <div className="bg-primary-light aspect-square w-16 flex justify-center items-center">
-                <Image
-                  src={getImageUrl(item.imageUrl)}
-                  width={63}
-                  height={63}
-                  alt={item.name}
-                  className="aspect-square object-contain"
-                />
-              </div>
-              <div className="self-center">
-                <div className="text-sm font-medium">{item.name}</div>
-                <div className="flex gap-3 font-medium text-xs">
-                  <div>{item.qty}x</div>
-                  <div className="text-primary">{priceFormatter(item.price)}</div>
+          {items.length ? (
+            items.map((item) => (
+              <div className="border-b border-gray-200 p-4 flex gap-3" key={item._id}>
+                <div className="bg-primary-light aspect-square w-16 flex justify-center items-center">
+                  <Image
+                    src={getImageUrl(item.imageUrl)}
+                    width={63}
+                    height={63}
+                    alt={item.name}
+                    className="aspect-square object-contain"
+                  />
                 </div>
+                <div className="self-center">
+                  <div className="text-sm font-medium">{item.name}</div>
+                  <div className="flex gap-3 font-medium text-xs">
+                    <div>{item.qty}x</div>
+                    <div className="text-primary">{priceFormatter(item.price)}</div>
+                  </div>
+                </div>
+                <Button
+                  size="small"
+                  variant="ghost"
+                  className="w-7 h-7 p-0! self-center ml-auto"
+                  onClick={() => {
+                    removeItem(item._id);
+                  }}>
+                  <FiTrash2 />
+                </Button>
               </div>
-              <Button
-                size="small"
-                variant="ghost"
-                className="w-7 h-7 p-0! self-center ml-auto"
-                onClick={() => {
-                  removeItem(item._id);
-                }}>
-                <FiTrash2 />
-              </Button>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="text-center font-light text-slate-400 text-lg pt-10">Your cart is empty.</p>
+          )}
         </div>
 
         <div className="border-t border-gray-200 p-4">
