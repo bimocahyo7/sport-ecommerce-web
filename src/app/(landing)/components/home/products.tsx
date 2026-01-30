@@ -23,7 +23,7 @@ const ProductsSection = ({ products }: TProductsProps) => {
   };
 
   return (
-    <section id="products-section" className="container mx-auto px-24">
+    <section id="products" className="container mx-auto px-24 scroll-mt-28">
       <h2 className="font-bold italic text-center text-primary text-4xl mb-14">
         OUR
         <span className="ml-2 text-dark">PRODUCTS</span>
