@@ -25,15 +25,18 @@ const ImageUploadPreview = ({ label, value, onChange, className }: TImageUploadP
 
   return (
     <div className={className}>
+      {label && <label className="block text-sm font-medium mb-2">{label}</label>}
       <div
         onClick={handleImageClick}
-        className="border-2 border-dashed border-primary bg-primary/5 rounded-lg h-50 flex flex-col justify-center items-center">
+        className="border-2 border-dashed border-primary bg-primary/5 rounded-lg h-50 flex flex-col justify-center items-center cursor-pointer">
         {value ? (
           <div className="max-w-47.5 relative">
-            <Image src={value} alt="preview product" className="w-full h-full object-cover" width={190} height={190} />
-            <div className="opacity-0 hover:opacity-100 absolute top-0 left-0 flex z-50">
-              <FiEdit />
-              Change Image
+            <Image src={value} alt="preview product" className="w-full h-full object-cover rounded-lg" width={190} height={190} />
+            <div className="opacity-0 hover:opacity-100 absolute inset-0 bg-black/50 flex items-center justify-center z-10 rounded-lg">
+              <div className="flex items-center gap-2 text-white">
+                <FiEdit size={20} />
+                <span className="text-sm font-medium">Change Image</span>
+              </div>
             </div>
           </div>
         ) : (
