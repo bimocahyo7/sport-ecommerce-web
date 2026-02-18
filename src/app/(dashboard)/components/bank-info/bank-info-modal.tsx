@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 import Button from "@/app/(landing)/components/ui/button";
 import Modal from "../ui/modal";
 import { Bank } from "@/app/types";
