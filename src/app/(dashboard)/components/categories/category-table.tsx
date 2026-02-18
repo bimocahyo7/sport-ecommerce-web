@@ -21,8 +21,8 @@ const CategoryTable = ({ categories, onEdit, onDelete }: TCategoriesProps) => {
           </tr>
         </thead>
         <tbody>
-          {categories.map((category, index) => (
-            <tr key={index} className="border-b border-gray-200 last:border-b-0">
+          {categories.map((category) => (
+            <tr key={category._id} className="border-b border-gray-200 last:border-b-0">
               <td className="px-6 py-4 font-medium">
                 <div className="flex gap-2 items-center">
                   <div className="aspect-square bg-gray-100 rounded-md">
