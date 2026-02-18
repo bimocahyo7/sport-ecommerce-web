@@ -1,4 +1,4 @@
-import { fetchAPI } from "../lib/api";
+import { fetchAPI, getAuthHeaders } from "../lib/api";
 import { Transaction } from "../types";
 
 export async function transactionCheckout(form: FormData): Promise<Transaction> {
@@ -11,4 +11,22 @@ export async function transactionCheckout(form: FormData): Promise<Transaction> 
 export async function getTransactionById(id: string): Promise<Transaction> {
   const response = await fetchAPI<Transaction>(`/transactions/${id}`);
   return response;
+}
+
+export async function getAllTransactions(): Promise<Transaction[]> {
+  return await fetchAPI<Transaction[]>("/transactions", {
+    headers: {
+      ...getAuthHeaders(),
+    },
+  });
+}
+
+export async function updateTransaction(id: string, data: FormData): Promise<Transaction> {
+  return await fetchAPI<Transaction>(`/transactions/${id}`, {
+    method: "PUT",
+    headers: {
+      ...getAuthHeaders(),
+    },
+    body: data,
+  });
 }
