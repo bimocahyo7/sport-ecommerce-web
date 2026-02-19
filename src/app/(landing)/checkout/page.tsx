@@ -18,10 +18,11 @@ const Checkout = () => {
 
   const handlePayment = () => {
     if (!items.length) {
+      toast.info("Your cart is empty. Please add items before checkout.");
       return;
     }
 
-    if (!formData.customerName && !formData.customerContact && !formData.customerAddress) {
+    if (!formData.customerName || !formData.customerContact || !formData.customerAddress) {
       toast.info("Please fill in all required customer fields");
       return;
     }
