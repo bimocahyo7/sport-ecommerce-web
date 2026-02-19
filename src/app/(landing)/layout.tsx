@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Poppins} from "next/font/google";
+import { Poppins } from "next/font/google";
 import "../globals.css";
 import Header from "./components/layouts/header";
 import Footer from "./components/layouts/footer";
+import { ToastContainer } from "react-toastify";
 
 const poppins = Poppins({
   variable: "--font-poppins",
   display: "swap",
-  weight: ["400","500","600","700","800"] 
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -25,12 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.variable} antialiased`}
-      >
-        <Header/>
+      <body className={`${poppins.variable} antialiased`}>
+        <ToastContainer position="top-right" autoClose={4000} />
+        <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

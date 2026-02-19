@@ -5,6 +5,7 @@ import CartItems from "../components/checkout/cart-items";
 import OrderInformation from "../components/checkout/order-information";
 import { CustomerInfo, useCartStore } from "@/app/hooks/use-cart-store";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Checkout = () => {
   const { push } = useRouter();
@@ -21,7 +22,7 @@ const Checkout = () => {
     }
 
     if (!formData.customerName && !formData.customerContact && !formData.customerAddress) {
-      alert("Please fill in all required customer fields");
+      toast.info("Please fill in all required customer fields");
       return;
     }
 

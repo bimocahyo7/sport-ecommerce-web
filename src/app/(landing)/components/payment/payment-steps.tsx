@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useCartStore } from "@/app/hooks/use-cart-store";
 import { transactionCheckout } from "@/app/services/transaction.service";
 import formatCurrency from "@/app/utils/formatCurrency";
+import { toast } from "react-toastify";
 
 const PaymentSteps = () => {
   const { push } = useRouter();
@@ -20,12 +21,12 @@ const PaymentSteps = () => {
 
   const handleConfirmPayment = async () => {
     if (!file) {
-      alert("File receipt must be uploaded!");
+      toast.info("File receipt must be uploaded!");
       return;
     }
 
     if (!customerInfo) {
-      alert("Customer info is missing, please return to checkout page!");
+      toast.info("Customer info is missing, please return to checkout page!");
       push("/checkout");
       return;
     }
@@ -41,12 +42,18 @@ const PaymentSteps = () => {
 
       const response = await transactionCheckout(formData);
 
-      alert("Your order has been created and is being processed!");
+      toast.success("Your order has been created and is being processed!");
       reset();
 
       // Navigate to Order Status page
       push(`/order-status/${response._id}`);
     } catch (error) {
+      if (error instanceof Error) {
+        toast.error(`Checkout failed: ${error.message}`);
+      } else {
+        toast.error("Unable to process your order. Please check your internet connection and try again. If the problem persists, contact our support.");
+      }
+
       console.log(error);
     }
   };
